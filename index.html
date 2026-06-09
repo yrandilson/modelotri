@@ -12,11 +12,35 @@
 
       <a-marker preset="hiro">
 
-        
-  <a-box position="0 0.5 0" material="color: green"></a-box>
-</a-marker>
+        <!-- BASE cilíndrica (ferro fundido) -->
+        <a-cylinder position="0 0.15 0" radius="0.35" height="0.3" color="#3a3530"></a-cylinder>
 
-<a-entity camera></a-entity>
+        <!-- HASTE central (latão) -->
+        <a-cylinder position="0 0.85 0" radius="0.045" height="1.1" color="#C8A050"></a-cylinder>
+
+        <!-- PIVÔ (bronze) -->
+        <a-sphere position="0 0.75 0" radius="0.09" color="#9A7A4E"></a-sphere>
+
+        <!-- BRAÇO horizontal (latão) -->
+        <a-box position="0 1.38 0" width="2.2" height="0.07" depth="0.07" color="#B89060"></a-box>
+
+        <!-- HASTE abajur esquerdo -->
+        <a-cylinder position="-0.9 1.15 0" radius="0.03" height="0.5" color="#C8A050"></a-cylinder>
+
+        <!-- HASTE abajur direito -->
+        <a-cylinder position="0.9 1.15 0" radius="0.03" height="0.5" color="#C8A050"></a-cylinder>
+
+        <!-- ABAJUR esquerdo (cobre) -->
+        <a-cone position="-0.9 0.82 0" radius-bottom="0.38" radius-top="0.04" height="0.45" color="#C07848" rotation="180 0 0"></a-cone>
+
+        <!-- ABAJUR direito (cobre) -->
+        <a-cone position="0.9 0.82 0" radius-bottom="0.38" radius-top="0.04" height="0.45" color="#C07848" rotation="180 0 0"></a-cone>
+
+        <!-- LÂMPADA esquerda -->
+        <a-sphere position="-0.9 0.9 0" radius="0.1" color="#FFE878" emissive="#FFE878" emissive-intensity="1"></a-sphere>
+
+        <!-- LÂMPADA direita -->
+        <a-sphere position="0.9 0.9 0" radius="0.1" color="#FFE878" emissive="#FFE878" emissive-intensity="1"></a-sphere>
 
       </a-marker>
 
