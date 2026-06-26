@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AR Teste — Sem GLB</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { overflow: hidden; }
+      #info {
+        position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+        z-index: 999; background: rgba(0,0,0,0.8); color: #fff;
+        padding: 0.5rem 1.2rem; border-radius: 20px;
+        font-family: sans-serif; font-size: 0.85rem; text-align: center;
+      }
+      #status {
+        position: fixed; top: 3.5rem; left: 50%; transform: translateX(-50%);
+        z-index: 999; background: #2ecc71; color: #fff;
+        padding: 0.5rem 1.2rem; border-radius: 20px;
+        font-family: sans-serif; font-size: 0.85rem;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="info">📷 Aponte para o marcador da balança</div>
+    <div id="status">✅ MARCADOR DETECTADO!</div>
+
+    <!-- debugUIEnabled: true para ver câmera sem modelo -->
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono;"
+      renderer="antialias: true;"
+      loading-screen="enabled: false"
+    >
+      <a-marker
+        type="pattern"
+        url="./pattern-marcador_balanca_raw.patt"
+        emitevents="true"
+        id="marcador-balanca"
+      >
+        <!-- Caixa vermelha simples — sem GLB, só para testar se o marcador é detectado -->
+        <a-box
+          position="0 0.5 0"
+          scale="1 1 1"
+          color="#D4603A"
+          opacity="0.9"
+        ></a-box>
+        <a-text
+          value="BALANÇA RA"
+          position="0 1.5 0"
+          align="center"
+          color="#ffffff"
+          scale="2 2 2"
+        ></a-text>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+      const marker = document.querySelector('#marcador-balanca');
+      const status = document.querySelector('#status');
+      const info   = document.querySelector('#info');
+
+      marker.addEventListener('markerFound', () => {
+        status.style.display = 'block';
+        info.textContent = '✅ Marcador encontrado!';
+        info.style.background = 'rgba(46,204,113,0.9)';
+        console.log('MARCADOR ENCONTRADO!');
+      });
+
+      marker.addEventListener('markerLost', () => {
+        status.style.display = 'none';
+        info.textContent = '📷 Aponte para o marcador da balança';
+        info.style.background = 'rgba(0,0,0,0.8)';
+        console.log('Marcador perdido');
+      });
+    </script>
+  </body>
+</html>
