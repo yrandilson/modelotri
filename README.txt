@@ -13,3 +13,4 @@ Formas usadas no index.html:
 Bibliotecas via CDN:
 - A-Frame 1.6.0: https://aframe.io/releases/1.6.0/aframe.min.js
 - AR.js: https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js
+- Site: http://irndevs.com/modelotri/
